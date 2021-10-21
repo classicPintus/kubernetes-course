@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cvl-nginx-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: cvl-nginx
+  ports:
+    - port: 80
+      name: http
+      targetPort: 80

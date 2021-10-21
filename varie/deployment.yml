@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cvl-nginx
+  labels:
+    app: cvl-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cvl-nginx
+  template:
+    metadata:
+      labels:
+        app: cvl-nginx
+    spec:
+      containers:
+        - name: cvl-nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /index.html
+              port: 80
+            initialDelaySeconds: 15
+            timeoutSeconds: 2
+            periodSeconds: 10
+            failureThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /index.html
+              port: 80
+            initialDelaySeconds: 15
+            timeoutSeconds: 2
+            periodSeconds: 10
+            failureThreshold: 1
+

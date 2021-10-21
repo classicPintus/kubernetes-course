@@ -1,0 +1,12 @@
+- Servizi
+  Ci sono 4 tipi
+    - ClusterIP - IP interno al cluster per raggiungere i pod sottostanti
+    - NodePort - Espone una porta all'esterno
+    - LoadBalancer - IP esterno al cluster per raggiungere i pod sottostanti.
+      - E' una combinazione di ClusterIP e NodePort. Dall'esterno si vede solo il load balancer. Quando arriva una chiamata dall'esterno, il load balancer redirige ad uno dei NodePort che a loro volta redirigono verso i pod
+    - ExternalName - Alias for external service
+  - se bisogna esporre porte (NodePort e LoadBalancer) per capire quale IP usare in minikube bisogna lanciare il comando "minikube service <serviceName> --url"
+
+- Utilizzo di immagini docker locali
+  - Lanciare il comando eval $(minikube -p minikube docker-env)
+  - Nella stessa shell fare docker build
