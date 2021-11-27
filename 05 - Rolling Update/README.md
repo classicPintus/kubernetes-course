@@ -14,4 +14,4 @@
 ## At the end... ##
 1. `kubectl delete -f nginx.yml`
 2. Close the terminal of the `minikube tunnel` command
-3. Close the termina with the `watch` command
+3. Close the terminal with the `watch` command
